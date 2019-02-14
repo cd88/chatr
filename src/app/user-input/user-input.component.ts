@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'user-input',
@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-input.component.sass']
 })
 export class UserInputComponent implements OnInit {
+  messageDraft: string = "";
+  @Output() newMessage = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  sendMessage(){
+    if(this.messageDraft === "") return;
+    this.newMessage.emit(this.messageDraft.replace(/\s+/gi, ' '));
   }
 
 }

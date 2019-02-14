@@ -20,5 +20,9 @@ export class AppComponent implements OnInit {
       }, error => {
         console.log(error)
       });
-    }
+  }
+
+  sendMessage(msg) {
+    console.log(msg)
+  }
 }
