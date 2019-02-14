@@ -1,3 +1,7 @@
-<p>
-  chat-item works!
-</p>
+<div [ngClass]="{
+  'message-sent': messageData.user === 'you',
+  'message-received': messageData.user === 'bot',
+  'message': true
+}">
+{{messageData.text}}
+</div>

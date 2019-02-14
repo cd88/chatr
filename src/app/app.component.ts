@@ -9,6 +9,7 @@ import { ChatBotService } from './chat-bot.service';
 export class AppComponent implements OnInit {
   title = 'chatter';
   chatApiConnected = false;
+  messageLog = [];
 
   constructor(private chatBotService: ChatBotService){}
 
@@ -22,7 +23,14 @@ export class AppComponent implements OnInit {
       });
   }
 
-  sendMessage(msg) {
-    console.log(msg)
+  sendMessage(msg: string) {
+    this.messageLog.push({user: 'you', text: msg});
+
+    this.chatBotService.messageChatBot(msg)
+      .subscribe( reply => {
+        this.messageLog.push({user: 'bot', text: reply['output']});
+      }, error => {
+        console.log(error);
+      });
   }
 }
