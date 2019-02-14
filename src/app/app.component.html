@@ -1,8 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div>
-  <chat-item *ngFor="let msg of messageLog"
-  [messageData]="msg">
-  </chat-item>
+<div class="app-container">
+  <div class="chat-item-container">
+    <chat-item *ngFor="let msg of messageLog"
+      [messageData]="msg">
+    </chat-item>
+  </div>
   <user-input (newMessage)="sendMessage($event)">
   </user-input>
 </div>

@@ -1,0 +1,26 @@
+.chat-item
+  width: 260px
+  color: white
+
+  span
+    padding: 5px 9px
+    border-radius: 9px
+
+  &.chat-item-sent
+    display: flex
+    justify-content: flex-end
+    max-width: 240px
+    margin: 0 16px 0 auto
+
+    span
+      background-color: #22CC66
+
+  &.chat-item-received
+    display: flex
+    justify-content: flex-start
+    width: auto
+    max-width: 240px
+    margin: 0 auto 0 16px
+
+    span
+      background-color: #CC3388
