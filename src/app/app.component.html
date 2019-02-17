@@ -1,11 +1,13 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="app-container">
+<mat-card class="app-container">
   <div #chatContainer class="chat-item-container">
     <chat-item *ngFor="let msg of messageLog"
       [messageData]="msg"
       (itemRendered)="snapToBottom($event)">
     </chat-item>
   </div>
-  <user-input (newMessage)="sendMessage($event)">
-  </user-input>
-</div>
+  <mat-card-footer>
+    <user-input (newMessage)="sendMessage($event)">
+    </user-input>
+  </mat-card-footer>
+</mat-card>

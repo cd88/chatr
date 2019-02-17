@@ -1,2 +1,14 @@
-<input [(ngModel)]="messageDraft" (keyup.enter)="sendMessage()" type="text">
-<button (click)="sendMessage()">Send</button>
+<form class="chat-input-form">
+  <mat-form-field class="chat-input-form-field">
+    <input matInput
+      [(ngModel)]="messageDraft"
+      type="text"
+      name="user-chat-input">
+  </mat-form-field>
+  <button mat-raised-button
+    color="primary"
+    aria-label="Click to perform search"
+    (click)="sendMessage()">
+      Send
+  </button>
+</form>
