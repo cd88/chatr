@@ -1,8 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="app-container">
-  <div class="chat-item-container">
+  <div #chatContainer class="chat-item-container">
     <chat-item *ngFor="let msg of messageLog"
-      [messageData]="msg">
+      [messageData]="msg"
+      (itemRendered)="snapToBottom($event)">
     </chat-item>
   </div>
   <user-input (newMessage)="sendMessage($event)">

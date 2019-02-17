@@ -1,15 +1,18 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'chat-item',
   templateUrl: './chat-item.component.html',
   styleUrls: ['./chat-item.component.sass']
 })
-export class ChatItemComponent implements OnInit {
+export class ChatItemComponent implements AfterViewInit {
   @Input() messageData: object;
+  @Output() itemRendered = new EventEmitter();
   constructor() { }
 
-  ngOnInit() {
+  ngAfterViewInit() {
+    console.log("chat-item fired AfterViewInit");
+    this.itemRendered.emit();
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ChatBotService } from './chat-bot.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { ChatBotService } from './chat-bot.service';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent implements OnInit {
+  @ViewChild('chatContainer') private chatContainer: ElementRef;
   title = 'chatter';
   chatApiConnected = false;
   messageLog = [];
@@ -32,5 +33,14 @@ export class AppComponent implements OnInit {
       }, error => {
         console.log(error);
       });
+  }
+
+  snapToBottom() {
+    let chatContainer = this.chatContainer.nativeElement;
+    console.log('snapToBottom was called: \n scrollTop + clientHeight: ', chatContainer.scrollTop + chatContainer.clientHeight, ' scrollHeight - 36: ', chatContainer.scrollHeight - 36)
+      // if scrolling is possible (initial chat-items cascade from top of blank box)
+    if (chatContainer.scrollTop + chatContainer.clientHeight >= chatContainer.scrollHeight - 118) {
+      chatContainer.scrollTo({left: 0 , top: 10000000, behavior: 'smooth'});
+    }
   }
 }
