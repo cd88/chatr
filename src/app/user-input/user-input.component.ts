@@ -15,7 +15,7 @@ export class UserInputComponent implements OnInit {
   }
 
   sendMessage(){
-    if(this.messageDraft === "") return;
+    if(this.messageDraft.trim() === "") return;
     this.newMessage.emit(this.messageDraft.replace(/\s+/gi, ' '));
     this.messageDraft = "";
   }
